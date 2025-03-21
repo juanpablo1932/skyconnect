@@ -1,7 +1,12 @@
 import { Airport } from "@/types/airports";
 import { create } from "zustand";
 
-export const useAirportStore = create((set) => ({
+interface AirportStore {
+  airports: Airport[];
+  setAirports: (airports: Airport[]) => void;
+}
+
+export const useAirportStore = create<AirportStore>((set) => ({
   airports: [],
-  setAirports: (airports: Airport) => set({ airports }),
+  setAirports: (airports) => set(() => ({ airports })),
 }));
