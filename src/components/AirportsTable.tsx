@@ -9,16 +9,17 @@ import { useEffect } from 'react'
 export default function AirportsTable({ data }: { data: Airport[] }) {
 
 
-  const { airports, setAirports } = useAirportStore()
+  const { airports, updateAirports, offset } = useAirportStore()
 
   console.log(airports)
 
   useEffect(() => {
-    setAirports(data)
-  }, [])
+    updateAirports(data)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data])
   return (
 <>
- {airports.map((airport) => (
+ {airports.slice(offset, offset + 6).map((airport) => (
     <Card key={airport.iata_code}>
       <AirportCardContent
         name={airport.airport_name}

@@ -1,7 +1,8 @@
 'use client'
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import {useAirportStore} from '@/stores/airport-store'
 
 interface PaginatorProps {
   totalPages: number;
@@ -12,31 +13,26 @@ export default function Paginator({ totalPages, visiblePages = 3 } : PaginatorPr
   const searchParams = useSearchParams()
   const { replace } = useRouter()
   const pathname = usePathname()
-  const [currentPage, setCurrentPage] = useState(1);
-  console.log(currentPage)
+
+  const { goToPrevious, goToNext, currentPage, offset} = useAirportStore()
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams)
 
-    if (currentPage) {
-      params.set('offset', currentPage.toString())
+    if (offset) {
+      params.set('offset', offset.toString())
     } else {
       params.delete('offset')
     }
 
     replace(`${pathname}?${params.toString()}`)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
-  // Calcula las páginas visibles
   const startPage = Math.max(1, currentPage - Math.floor(visiblePages / 2));
   const endPage = Math.min(totalPages, startPage + visiblePages - 1);
   
   const pages = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
-
-  // Funciones para cambiar de página
-  const goToPage = (page: number) => setCurrentPage(page);
-  const goToPrevious = () => setCurrentPage((prev) => Math.max(1, prev - 1));
-  const goToNext = () => setCurrentPage((prev) => Math.min(totalPages, prev + 1));
 
   return (
     <div className="flex items-center gap-2">
@@ -51,7 +47,6 @@ export default function Paginator({ totalPages, visiblePages = 3 } : PaginatorPr
       {pages.map((page) => (
         <button
           key={page}
-          onClick={() => goToPage(page)}
           className={`px-3 py-2 rounded-md ${
             currentPage === page ? "bg-blue-800 text-white" : "bg-blue-500 text-white"
           }`}

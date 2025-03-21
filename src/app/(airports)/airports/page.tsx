@@ -7,15 +7,16 @@ import SearchButton from "@/components/SearchButton";
 
 
 export default async function Airports({
-  searchParams
+  searchParams,
 }: {
-  searchParams?: {
-    offset: string
-  }
+  searchParams?: Promise<{ offset?: string }>;
 }) {
-  const offset = searchParams?.offset || "0"
-  const res = await getAirports(offset)
-  const totalPages = Math.ceil(res.pagination.total / 6)
+  const resolvedSearchParams = await searchParams;
+  const offset = resolvedSearchParams?.offset ?? "0";
+
+  const res = await getAirports(offset);
+  const totalPages = Math.ceil(res.pagination.total / 6);
+
   return (
     <>
       <section className="flex flex-row justify-center gap-20 pt-10">
@@ -27,10 +28,13 @@ export default async function Airports({
           <SearchButton />
         </div>
       </section>
-      <section className=" flex flex-row justify-center flex-wrap gap-5 pt-10 ">
+      <section className="flex flex-row justify-center flex-wrap gap-5 pt-10 ">
         <AirportsTable data={res.data} />
-        <Paginator totalPages={totalPages}/>
+      </section>
+      <section className="flex flex-row justify-center gap-5 pt-10">
+        <Paginator totalPages={totalPages} />
       </section>
     </>
-  )
+  );
 }
+
