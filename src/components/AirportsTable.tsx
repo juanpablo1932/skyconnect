@@ -20,7 +20,7 @@ export default function AirportsTable({ data }: { data: Airport[] }) {
   }, [data])
 
   const sortedAirports = [...airports].sort((a, b) => a.iata_code.localeCompare(b.iata_code));
-  console.log(sortedAirports)
+
   return (
 <>
  {sortedAirports.slice(offset, offset + 6).filter(
@@ -30,7 +30,7 @@ export default function AirportsTable({ data }: { data: Airport[] }) {
  ).map((airport) => (
   <Link className='w-1/2 max-w-2xl h-52' href={{
     pathname: `/airports/${airport.airport_name}`,
-    // query: { name: airport.airport_name }
+    query: { code: airport.iata_code }
   }} key={airport.airport_name}>
     <Card>
       <AirportCardContent
