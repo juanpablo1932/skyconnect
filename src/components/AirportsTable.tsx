@@ -19,19 +19,30 @@ export default function AirportsTable({ data }: { data: Airport[] }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
+  const handleSessionStorage = (airport: Airport) => {
+    sessionStorage.setItem('airport', JSON.stringify(airport))
+  }
+
   const sortedAirports = [...airports].sort((a, b) => a.iata_code.localeCompare(b.iata_code));
 
-  return (
-<>
- {sortedAirports.slice(offset, offset + 6).filter(
+  const filteredAirports = sortedAirports.slice(offset, offset + 6).filter(
     (airport) =>
       airport.airport_name.toLowerCase().includes(search.toLowerCase()) ||
       airport.iata_code.toLowerCase().includes(search.toLowerCase())
- ).map((airport) => (
-  <Link className='w-1/2 max-w-2xl h-52' href={{
-    pathname: `/airports/${airport.airport_name}`,
-    query: { code: airport.iata_code }
-  }} key={airport.airport_name}>
+ )
+
+  return (
+<>
+ {filteredAirports.map((airport) => (
+  <Link
+    className='w-1/2 max-w-2xl h-52'
+    href={{
+      pathname: `/airports/${airport.airport_name}`,
+      query: { code: airport.iata_code }
+    }}
+    key={airport.airport_name}
+    onClick={() => handleSessionStorage(airport)}
+  >
     <Card>
       <AirportCardContent
         name={airport.airport_name}

@@ -2,8 +2,15 @@
 
 import Image from 'next/image'
 import GradientText from './GradientText'
+import { useEffect, useState } from 'react';
 
 export default function LocalTimeCardContent() {
+
+  const [currentTime, setCurrentTime] = useState<string | null>(null);
+
+  useEffect(() => {
+    setCurrentTime(new Date().toLocaleString('es-Es'));
+  }, []);
 
 
   return (
@@ -20,7 +27,7 @@ export default function LocalTimeCardContent() {
         <GradientText text="Hora Local" size="text-2xl" />
       </div>
       <div className='flex flex-col gap-2'>
-        <p>{new Date().toLocaleString("es-ES")}</p>
+        <p>{currentTime}</p>
       </div>
   </div>
   )

@@ -15,16 +15,12 @@ interface AirportData {
 
 export default async function page({
   searchParams,
-  params,
 }: {
   searchParams?: Promise<{ option?: string, code?: string }>;
-  params: Promise<{ airport: string }>
 }) {
-  const {airport} = await params;
   const resolvedSearchParams = await searchParams;
   const iataCode = resolvedSearchParams?.code;
   const optionTab = resolvedSearchParams?.option;
-  const decodedAirport = decodeURIComponent(airport);
 
   const filePath = path.join(process.cwd(), 'public', 'airports.csv');
   const fileContent = fs.readFileSync(filePath, 'utf8');
@@ -35,17 +31,17 @@ export default async function page({
 
   return (
     <>
-      {optionTab === "general" && <CardDetail><GeneralCardContent airportName={decodedAirport}/></CardDetail>}
+      {optionTab === "general" && <CardDetail><GeneralCardContent/></CardDetail>}
       {optionTab === "ubicacion" &&
         <div className='flex flex-col gap-5'>
-          <CardDetail><LocationCardContent airportName={decodedAirport}/></CardDetail>
+          <CardDetail><LocationCardContent/></CardDetail>
           {data && <Map lat={+data.latitude_deg} lng={+data.longitude_deg}/>}
         </div>
       }
       {optionTab === "zona-horaria" &&
         <div className='flex flex-col gap-5'>
           <CardDetail>
-            <TimeZoneCardContent airportName={decodedAirport}/>
+            <TimeZoneCardContent/>
           </CardDetail>
           <CardDetail>
             <LocalTimeCardContent/>
