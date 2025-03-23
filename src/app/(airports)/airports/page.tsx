@@ -1,10 +1,9 @@
 import { getAirports } from "@/app/api/airports/route"
-import ActionButton from "@/components/ActionButton";
 import AirportsTable from "@/components/AirportsTable";
 import GradientText from "@/components/GradientText";
 import InputText from "@/components/InputText";
 import Paginator from "@/components/Paginator";
-import SearchButton from "@/components/SearchButton";
+import ButtonWithIcon from "@/components/ButtonWithIcon";
 import Link from "next/link";
 
 
@@ -27,9 +26,8 @@ export default async function Airports({
         </div>
         <div className="flex flex-row items-center justify-center gap-5">
           <InputText />
-          <SearchButton />
           <Link href="/">
-            <ActionButton />
+          <ButtonWithIcon icon="/hogar.png" text="Inicio" />
           </Link>
         </div>
       </section>

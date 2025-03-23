@@ -1,6 +1,6 @@
 import GradientText from "@/components/GradientText";
 import InputText from "@/components/InputText";
-import SearchButton from "@/components/SearchButton";
+import ButtonWithIcon from "@/components/ButtonWithIcon";
 import Link from "next/link";
 
 
@@ -17,7 +17,7 @@ export default async function Home() {
     <div className="flex flex-col items-center justify-center gap-5">
       <InputText />
       <Link href="/airports">
-        <SearchButton />
+        <ButtonWithIcon icon='/Magnifer.png' text="Buscar" />
       </Link>
     </div>
     </section>
