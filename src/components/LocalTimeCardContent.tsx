@@ -3,14 +3,16 @@
 import Image from 'next/image'
 import GradientText from './GradientText'
 import { useEffect, useState } from 'react';
+import { useAirportDetail } from '@/lib/hooks/useAirportDetail';
 
 export default function LocalTimeCardContent() {
 
   const [currentTime, setCurrentTime] = useState<string | null>(null);
+  const airport = useAirportDetail();
 
   useEffect(() => {
-    setCurrentTime(new Date().toLocaleString('es-Es'));
-  }, []);
+    setCurrentTime(new Date().toLocaleString('es-Es', {timeZone: airport?.timezone}));
+  }, [airport]);
 
 
   return (
