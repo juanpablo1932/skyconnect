@@ -5,9 +5,7 @@ import Link from "next/link";
 
 
 
-export default async function Home() {
-
-
+export default function Home() {
 
   return (
     <section className="flex flex-col items-center justify-center h-screen gap-20 pb-30">

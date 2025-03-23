@@ -1,4 +1,3 @@
-import { getAirports } from "@/app/api/airports/route"
 import AirportsTable from "@/components/AirportsTable";
 import GradientText from "@/components/GradientText";
 import InputDebounce from "@/components/InputDebounce";
@@ -15,7 +14,10 @@ export default async function Airports({
   const resolvedSearchParams = await searchParams;
   const offset = resolvedSearchParams?.offset ?? "0";
 
-  const res = await getAirports(offset);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/airports?offset=${offset}`
+  ).then((res) => res.json());
+  
   const totalPages = Math.ceil(res.pagination.total / 6);
 
   return (

@@ -1,4 +1,8 @@
-export async function getAirports(offset: string) {
+import { NextResponse } from "next/server";
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const offset = searchParams.get("offset") || "0";
   const limit = "6";
 
   const response = await fetch(
@@ -6,8 +10,12 @@ export async function getAirports(offset: string) {
   );
 
   if (!response.ok) {
-    throw new Error("Failed to fetch airports");
+    return NextResponse.json(
+      { error: "Failed to fetch airports" },
+      { status: 500 }
+    );
   }
+
   const { data, pagination } = await response.json();
-  return { data, pagination };
+  return NextResponse.json({ data, pagination });
 }
