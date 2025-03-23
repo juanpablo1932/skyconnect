@@ -16,7 +16,7 @@ export default function AirportsTable({ data }: { data: Airport[] }) {
 
   return (
 <>
- {filteredAirports.map((airport) => (
+ {filteredAirports.length === 0 ? <p>...Cargando</p> : filteredAirports.map((airport) => (
   <Link
     className='w-1/2 max-w-2xl h-52'
     href={{
