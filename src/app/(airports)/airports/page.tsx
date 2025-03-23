@@ -1,7 +1,7 @@
 import { getAirports } from "@/app/api/airports/route"
 import AirportsTable from "@/components/AirportsTable";
 import GradientText from "@/components/GradientText";
-import InputText from "@/components/InputText";
+import InputDebounce from "@/components/InputDebounce";
 import Paginator from "@/components/Paginator";
 import ButtonWithIcon from "@/components/ButtonWithIcon";
 import Link from "next/link";
@@ -25,7 +25,7 @@ export default async function Airports({
           <GradientText text="SkyConnect Explorer" size="text-4xl" />
         </div>
         <div className="flex flex-row items-center justify-center gap-5">
-          <InputText />
+          <InputDebounce />
           <Link href="/">
           <ButtonWithIcon icon="/hogar.png" text="Inicio" />
           </Link>
