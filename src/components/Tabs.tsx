@@ -18,11 +18,9 @@ export default function Tabs() {
 
     useEffect(() => {
       const params = new URLSearchParams(searchParams)
-  
+      params.set('option', activeTab)
 
-        params.set('option', activeTab)
-
-        replace(`${pathname}?${params.toString()}`)
+      replace(`${pathname}?${params.toString()}`)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeTab]);
 

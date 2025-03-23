@@ -2,18 +2,11 @@
 
 import Image from 'next/image'
 import GradientText from './GradientText'
-import { Airport } from '@/types/airports';
-import { useEffect, useState } from 'react';
+import { useAirportDetail } from '@/lib/hooks/useAirportDetail'
 
 export default function TimeZoneCardContent() {
-  const [airport, setAirport] = useState<Airport | null>(null);
 
-  useEffect(() => {
-    const storedAirport = sessionStorage.getItem('airport');
-    if (storedAirport) {
-      setAirport(JSON.parse(storedAirport));
-    }
-  }, []);
+  const airport = useAirportDetail()
 
   return (
     <div className='m-5 flex flex-col gap-6'>

@@ -7,7 +7,7 @@ export default function layout({
 }>) {
   return (
     <>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className='h-full flex flex-row items-center justify-center'>Loading...</div>}>
       {children}
     </Suspense>
     </>

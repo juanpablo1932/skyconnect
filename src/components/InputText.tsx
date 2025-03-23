@@ -6,7 +6,6 @@ import { useSearchStore } from '@/stores/search-store';
 export default function InputText() {
   const { setSearch, search } = useSearchStore();
 
-
   return (
     <>
       <input

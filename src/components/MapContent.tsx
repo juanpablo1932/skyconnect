@@ -11,8 +11,6 @@ const customIcon = new L.Icon({
 export default function MapContent({ lat, lng }: { lat: number; lng: number }) {
   const position: [number, number] = [lat, lng];
 
-  console.log('MapContent', position);
-
   return (
     <div className="w-full h-96 overflow-hidden rounded-md">
       <MapContainer className="h-full" center={position} zoom={13} scrollWheelZoom={false}>

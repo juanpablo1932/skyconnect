@@ -24,8 +24,6 @@ export default async function page({
 
   const filePath = path.join(process.cwd(), 'public', 'airports.csv');
   const fileContent = fs.readFileSync(filePath, 'utf8');
-
-
   const data = Papa.parse<AirportData>(fileContent, { header: true }).data.find((item) => iataCode === item.iata_code);
 
 
