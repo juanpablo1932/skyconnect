@@ -33,7 +33,7 @@ export default async function Airports({
           </Link>
         </div>
       </section>
-      <section className="flex flex-row justify-center flex-wrap gap-5 pt-10 w-4/5 ">
+      <section className="flex flex-row justify-center flex-wrap gap-5 pt-10 w-4/5 2xl:w-full ">
         <AirportsTable data={res.data} />
       </section>
       <section className="flex flex-row justify-center gap-5 pt-10 pb-10 lg:pb-0">
