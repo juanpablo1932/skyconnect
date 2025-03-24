@@ -13,8 +13,8 @@ export default function GeneralCardContent() {
       <div className='flex flex-row gap-3'>
         <Image
           className=""
-          src={"/info.png"}
-          alt={"flight"}
+          src={"/Info.png"}
+          alt={"Info"}
           quality={100}
           width={30}
           height={10}
