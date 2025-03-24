@@ -4,7 +4,7 @@ import GradientText from './GradientText'
 
 export default function AirportCardContent({name, country, city, code} : {name: string, country: string | null, city: string, code: string}) {
   return (
-    <div className='m-5 flex flex-col gap-8'>
+    <div className='m-5 flex flex-col gap-2 sm:gap-8'>
       <Image
         className="absolute right-2 top-2"
         src={"/flight.png"}
@@ -14,11 +14,11 @@ export default function AirportCardContent({name, country, city, code} : {name: 
         height={40}
       />
       <div>
-        <h2 className="text-2xl font-bold">{name}</h2>
-        <p>{country}, {city.split("/")[1]}</p>
+        <h2 className="text-2sm sm:text-2xl font-bold">{name}</h2>
+        <p className="text-2sm sm:text-1xl">{country}, {city.split("/")[1]}</p>
       </div>
       <div>
-        <GradientText text={code} size="text-4xl" />
+        <GradientText text={code} size="text-2sm sm:text-4xl" />
       </div>
   </div>
   )

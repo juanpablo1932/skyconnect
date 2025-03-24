@@ -22,11 +22,11 @@ export default async function Airports({
 
   return (
     <>
-      <section className="flex flex-row justify-center gap-20 pt-10">
-        <div>
-          <GradientText text="SkyConnect Explorer" size="text-4xl" />
+      <section className="xl:flex-row xl:gap-20 flex flex-col justify-center gap-10 pt-10">
+        <div className="flex flex-row justify-center">
+          <GradientText text="SkyConnect Explorer" size="text-2xl lg:text-4xl sm:text-3xl" />
         </div>
-        <div className="flex flex-row items-center justify-center gap-5">
+        <div className="sm:flex-row flex flex-col items-center justify-center gap-5">
           <InputDebounce />
           <Link href="/">
           <ButtonWithIcon icon="/hogar.png" text="Inicio" />
@@ -36,7 +36,7 @@ export default async function Airports({
       <section className="flex flex-row justify-center flex-wrap gap-5 pt-10 ">
         <AirportsTable data={res.data} />
       </section>
-      <section className="flex flex-row justify-center gap-5 pt-10">
+      <section className="flex flex-row justify-center gap-5 pt-10 pb-10 lg:pb-0">
         <Paginator totalPages={totalPages} />
       </section>
     </>

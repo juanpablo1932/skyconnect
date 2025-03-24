@@ -29,15 +29,18 @@ export default async function page({
 
   return (
     <>
-      {optionTab === "general" && <CardDetail><GeneralCardContent/></CardDetail>}
+      {optionTab === "general" &&
+        <div className='p-5 sm:p-0'>
+          <CardDetail><GeneralCardContent/></CardDetail>
+        </div>}
       {optionTab === "ubicacion" &&
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 p-5 sm:p-0'>
           <CardDetail><LocationCardContent/></CardDetail>
           {data && <Map lat={+data.latitude_deg} lng={+data.longitude_deg}/>}
         </div>
       }
       {optionTab === "zona-horaria" &&
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 p-5 sm:p-0'>
           <CardDetail>
             <TimeZoneCardContent/>
           </CardDetail>

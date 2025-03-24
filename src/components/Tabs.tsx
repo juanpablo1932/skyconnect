@@ -25,9 +25,8 @@ export default function Tabs() {
     }, [activeTab]);
 
   return (
-    <div>
-      {/* Tabs */}
-      <div className="flex gap-10 bg-gray-700 p-2 rounded-lg">
+    <>
+      <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 bg-gray-700 p-2 rounded-lg">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -44,6 +43,6 @@ export default function Tabs() {
           </button>
         ))}
       </div>
-    </div>
+    </>
   );
 }

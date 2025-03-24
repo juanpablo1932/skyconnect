@@ -17,6 +17,7 @@ export default function RootLayout({
       <body>
          {children}
         <Image
+          id="airportBackground"
           className="-z-1 opacity-30"
           src={"/airport.png"}
           alt={"airport"}

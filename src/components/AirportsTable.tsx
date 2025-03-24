@@ -18,7 +18,7 @@ export default function AirportsTable({ data }: { data: Airport[] }) {
 <>
  {filteredAirports.length === 0 ? <p>...Cargando</p> : filteredAirports.map((airport) => (
   <Link
-    className='w-1/2 max-w-2xl h-52'
+    className='w-1/2 max-w-2xl h-auto sm:h-52'
     href={{
       pathname: `/airports/${airport.airport_name.replace(/\//g, " ")}`,
       query: { code: airport.iata_code }
