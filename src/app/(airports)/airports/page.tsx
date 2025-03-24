@@ -21,7 +21,7 @@ export default async function Airports({
   const totalPages = Math.ceil(res.pagination.total / 6);
 
   return (
-    <>
+    <div className="flex flex-col items-center h-screen">
       <section className="xl:flex-row xl:gap-20 flex flex-col justify-center gap-10 pt-10">
         <div className="flex flex-row justify-center">
           <GradientText text="SkyConnect Explorer" size="text-2xl lg:text-4xl sm:text-3xl" />
@@ -33,13 +33,13 @@ export default async function Airports({
           </Link>
         </div>
       </section>
-      <section className="flex flex-row justify-center flex-wrap gap-5 pt-10 ">
+      <section className="flex flex-row justify-center flex-wrap gap-5 pt-10 w-4/5 ">
         <AirportsTable data={res.data} />
       </section>
       <section className="flex flex-row justify-center gap-5 pt-10 pb-10 lg:pb-0">
         <Paginator totalPages={totalPages} />
       </section>
-    </>
+    </div>
   );
 }
 
