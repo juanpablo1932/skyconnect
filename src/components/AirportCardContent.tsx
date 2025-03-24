@@ -6,7 +6,7 @@ export default function AirportCardContent({name, country, city, code} : {name: 
   return (
     <div className='m-5 flex flex-col gap-2 sm:gap-8'>
       <Image
-        className="absolute right-2 top-2"
+        className="absolute right-1 top-1 sm:right-2 sm:top-2 w-5 h-5 sm:w-10 sm:h-10"
         src={"/flight.png"}
         alt={"flight"}
         quality={100}
